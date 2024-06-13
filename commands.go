@@ -10,8 +10,8 @@ import (
 
 func printUsage() {
 	fmt.Println("\033[1;32mUsage:\033[0m")
-	fmt.Println("  \033[1;36mgo run ytmp3.go download\033[0m    - Download and convert a YouTube video to MP3")
-	fmt.Println("  \033[1;36mgo run ytmp3.go addArtwork\033[0m  - Add album artwork to an existing MP3 file")
+	fmt.Println("  \033[1;36mgo run . download\033[0m    - Download and convert a YouTube video to MP3")
+	fmt.Println("  \033[1;36mgo run . addArtwork\033[0m  - Add album artwork to an existing MP3 file")
 	fmt.Println("")
 	fmt.Println("\033[1;32mCommands:\033[0m")
 	fmt.Println("  \033[1;36mdownload (d)\033[0m     - Download and convert a YouTube video to MP3")
