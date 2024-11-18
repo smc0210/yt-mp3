@@ -8,11 +8,11 @@ import (
 	"unicode"
 )
 
-func listFiles(directory string) {
+func listFilesWithIndexes(directory string) ([]string, []string) {
 	files, err := os.ReadDir(directory)
 	if err != nil {
 		fmt.Printf("Error reading directory: %v\n", err)
-		return
+		return nil, nil
 	}
 
 	mp3Files := []string{}
@@ -28,14 +28,16 @@ func listFiles(directory string) {
 	}
 
 	fmt.Println("\033[1;36mMP3 Files:\033[0m")
-	for _, file := range mp3Files {
-		fmt.Printf("  - %s\n", file)
+	for i, file := range mp3Files {
+		fmt.Printf("  [%d] - %s\n", i, file)
 	}
 
 	fmt.Println("\033[1;36mImage Files:\033[0m")
-	for _, file := range imageFiles {
-		fmt.Printf("  - %s\n", file)
+	for i, file := range imageFiles {
+		fmt.Printf("  [%d] - %s\n", i, file)
 	}
+
+	return mp3Files, imageFiles
 }
 
 func sanitizeFilename(filename string) string {

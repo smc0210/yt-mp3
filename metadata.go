@@ -80,7 +80,5 @@ func addArtwork(audioFile, thumbnailFile string) error {
 	if err := tag.Save(); err != nil {
 		return err
 	}
-
-	fmt.Println("앨범 아트워크가 성공적으로 추가되었습니다!")
 	return nil
 }

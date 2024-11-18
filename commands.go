@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"strconv"
 	"strings"
 )
 
@@ -53,19 +54,27 @@ func handleAddArtwork() {
 	reader := bufio.NewReader(os.Stdin)
 
 	fmt.Println("\033[1;32mOutput 폴더에 있는 파일 목록:\033[0m")
-	listFiles("./output")
+	mp3Files, imageFiles := listFilesWithIndexes("./output")
 
-	fmt.Print("Enter the path to the MP3 file: ")
-	audioFile, _ := reader.ReadString('\n')
-	audioFile = strings.TrimSpace(audioFile)
-	audioFile = filepath.Join("./output", audioFile) // 경로를 절대 경로로 변환
+	fmt.Print("Enter the index of the MP3 file: ")
+	audioIndexStr, _ := reader.ReadString('\n')
+	audioIndex, err := strconv.Atoi(strings.TrimSpace(audioIndexStr))
+	if err != nil || audioIndex < 0 || audioIndex >= len(mp3Files) {
+		fmt.Println("Invalid index.")
+		return
+	}
+	audioFile := filepath.Join("./output", mp3Files[audioIndex])
 
-	fmt.Print("Enter the path to the thumbnail image (JPG): ")
-	thumbnailFile, _ := reader.ReadString('\n')
-	thumbnailFile = strings.TrimSpace(thumbnailFile)
-	thumbnailFile = filepath.Join("./output", thumbnailFile) // 경로를 절대 경로로 변환
+	fmt.Print("Enter the index of the thumbnail image (JPG): ")
+	thumbnailIndexStr, _ := reader.ReadString('\n')
+	thumbnailIndex, err := strconv.Atoi(strings.TrimSpace(thumbnailIndexStr))
+	if err != nil || thumbnailIndex < 0 || thumbnailIndex >= len(imageFiles) {
+		fmt.Println("Invalid index.")
+		return
+	}
+	thumbnailFile := filepath.Join("./output", imageFiles[thumbnailIndex])
 
-	err := addArtwork(audioFile, thumbnailFile)
+	err = addArtwork(audioFile, thumbnailFile)
 	if err != nil {
 		fmt.Printf("Error: %v\n", err)
 		return
