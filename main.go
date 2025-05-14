@@ -13,6 +13,8 @@ func main() {
 		handleDownload()
 	case "addArtwork", "a":
 		handleAddArtwork()
+	case "video", "v":
+		handleVideoDownload()
 	default:
 		printUsage()
 	}
