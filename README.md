@@ -6,23 +6,29 @@
 
 ### Running the Program
 
-The program can be run using the `go run .` command. Use the following commands to perform specific tasks:
+The program is run from the terminal using `go run .` followed by a command.
+If no command is provided or an invalid command is used, a list of available commands will be shown.
 
-#### Download and Convert YouTube Video to MP3
+Here's what each command does:
 
-```sh
-go run . download
-```
+*   **Download and Convert YouTube Video to MP3**
+    *   Command: `go run . download` (or `d`)
+    *   Prompts you to enter the URL of the YouTube video.
+    *   Downloads the audio, converts it to an MP3 file, adds metadata (like title and artwork from YouTube if available), and saves it in the `output` directory.
 
-You will be prompted to enter the URL of the YouTube video. The program will download the video, convert it to an MP3 file, and save it in the `output` directory. Metadata and album artwork will also be added to the MP3 file.
+*   **Download YouTube Video as MP4 (or other best format)**
+    *   Command: `go run . video` (or `v`)
+    *   Prompts you to enter the URL of the YouTube video.
+    *   Asks you to select the video quality (e.g., 720p, 1080p, best available).
+    *   Asks if you want to force the output to be an MP4 file.
+    *   Downloads the video to the `output` directory.
+        *   *Note:* If you select "best available" quality and don't force MP4 output, `yt-dlp` might save the file in a different container format (like MKV) if that's better for the chosen video/audio streams.
 
-#### Add Album Artwork to an Existing MP3 File
-
-```sh
-go run . addArtwork
-```
-
-You will be prompted to enter the path to the MP3 file and the path to the thumbnail image (JPG). The program will add the provided album artwork to the MP3 file.
+*   **Add Album Artwork to an Existing MP3 File**
+    *   Command: `go run . addArtwork` (or `a`)
+    *   Lists MP3 and JPG image files currently in the `output` directory.
+    *   Prompts you to enter the index number for the MP3 file and for the JPG image.
+    *   Embeds the selected image as album artwork into the MP3 file.
 
 ## Project Structure
 
