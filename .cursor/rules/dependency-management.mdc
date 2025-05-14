@@ -1,0 +1,10 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Dependency Management
+
+This project uses Go modules for dependency management.
+*   [go.mod](mdc:go.mod): Defines the module's path, dependencies, and versions.
+*   [go.sum](mdc:go.sum): Contains the checksums of direct and indirect dependencies to ensure integrity.
