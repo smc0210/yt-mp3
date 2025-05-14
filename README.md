@@ -1,4 +1,3 @@
-
 # yt-mp3
 
 `yt-mp3` is a program that extracts MP3 files from YouTube URLs and adds metadata and album artwork to them.
@@ -51,6 +50,12 @@ Make sure you have the following installed:
 
 - [Go](https://golang.org/dl/) (version 1.16 or later)
 - [yt-dlp](https://github.com/yt-dlp/yt-dlp)
+  - **Installation:**
+    - **macOS (using [Homebrew](https://brew.sh/)):**
+      ```sh
+      brew install yt-dlp
+      ```
+    - **Other OS / Manual Installation:** Please refer to the [official yt-dlp installation guide](https://github.com/yt-dlp/yt-dlp#installation).
 - [ffmpeg](https://ffmpeg.org/)
 
 ## Installation
